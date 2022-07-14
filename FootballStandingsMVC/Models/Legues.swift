@@ -25,35 +25,41 @@ struct LeagueLogos: Decodable {
     let light: String
     let dark: String
 }
-//
-//// MARK: - Seasons
-//struct SeasonsResponse: Decodable {
-//    let status: Bool
-//    let data: Seasons
-//}
-//
-//struct Seasons: Decodable {
-//    let name: String
-//    let desc: String
-//    let abbreviation: String
-//    let seasons: [Season]
-//}
-//
-//struct Season: Decodable {
-//    let year: Int
-//    let startDate: String
-//    let endDate: String
-//    let types: [SeasonType]
-//}
-//
-//struct SeasonType: Decodable {
-//    let id: String
-//    let name: String
-//    let abbreviation: String
-//    let startDate: String
-//    let endDate: String
-//    let hasStandings: Bool
-//}
+
+// MARK: - Seasons
+struct SeasonsResponse: Decodable {
+    let status: Bool
+    let data: Seasons
+}
+
+struct Seasons: Decodable {
+    let name: String
+    let desc: String
+    let abbreviation: String
+    let seasons: [Season]
+}
+
+struct Season: Decodable {
+    let year: Int
+    let startDate: String
+    let endDate: String
+    let displayName: String
+    let types: [SeasonType]
+}
+
+struct SeasonType: Decodable {
+    let id: String
+    let name: String
+    let abbreviation: String
+    let startDate: String
+    let endDate: String
+    let hasStandings: Bool
+}
+
+// MARK: - Standings
+
+
+
 
 // MARK: - Link
 enum Link: String {

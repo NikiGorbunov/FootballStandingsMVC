@@ -7,11 +7,11 @@
 
 import Foundation
 
-//enum NetworkError: Error {
-//    case invalidURL
-//    case noData
-//    case decodingError
-//}
+enum NetworkError: Error {
+    case invalidURL
+    case noData
+    case decodingError
+}
 
 class NetworkManager {
     
@@ -19,7 +19,7 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchData(from url: String?, with completion: @escaping(Leagues) -> Void) {
+    func fetchLeagues(from url: String?, with completion: @escaping(Leagues) -> Void) {
         guard let url = URL(string: url ?? "") else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -37,6 +37,27 @@ class NetworkManager {
                 print(error)
             }
             
+        }.resume()
+    }
+    
+    func fetchSeasons(from url: String?, with completion: @escaping(SeasonsResponse) -> Void) {
+        guard let url = URL(string: url ?? "") else { return }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+
+            do {
+                let seasons = try JSONDecoder().decode(SeasonsResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(seasons)
+                }
+            } catch let error {
+                print(error)
+            }
+
         }.resume()
     }
 }

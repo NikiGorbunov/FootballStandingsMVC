@@ -1,5 +1,5 @@
 //
-//  LeagueImageView.swift
+//  ImageView.swift
 //  FootballStandingsMVC
 //
 //  Created by Никита Горбунов on 14.07.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeagueImageView: UIImageView {
+class ImageView: UIImageView {
     func fetchImage(from url: String) {
         guard let url = URL(string: url) else { return }
         

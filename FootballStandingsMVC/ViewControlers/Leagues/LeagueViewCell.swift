@@ -35,17 +35,17 @@ class LeagueViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var logo: LeagueImageView = {
-        let image = LeagueImageView()
+    private lazy var logo: ImageView = {
+        let image = ImageView()
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         return image
     }()
     
-    func configure(model: League?) {
-        nameLabel.text = model?.name
-        abbrLabel.text = model?.abbr
-        logo.fetchImage(from: model?.logos.light ?? "")
+    func configure(league: League?) {
+        nameLabel.text = league?.name
+        abbrLabel.text = league?.abbr
+        logo.fetchImage(from: league?.logos.light ?? "")
         configure()
     }
     
